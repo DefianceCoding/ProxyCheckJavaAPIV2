@@ -17,7 +17,15 @@ public class DashboardUtil {
 
     }
 
-    //https://proxycheck.io/dashboard/export/detections/?json=1&key=111111-222222-333333-444444&limit=100&offset=0
+    /**
+     *
+     *
+     * @param useJsonFormat boolean value of whether to get response as JSON formatted String
+     * @param apiKey APIKey from https://proxycheck.io/
+     * @param limit Limit of results to show
+     * @param offset Number of results to offset the search
+     * @return
+     */
     public String exportDetections(boolean useJsonFormat, String apiKey, int limit, int offset){
         int useJson = useJsonFormat ? 1 : 0;
         baseURL += "export/detections/";
@@ -29,8 +37,15 @@ public class DashboardUtil {
         return httpQuery.sendGet(baseURL);
     }
 
-
-    //https://proxycheck.io/dashboard/export/tags/?key=111111-222222-333333-444444&limit=100&offset=0&addresses=1&days=1
+    /**
+     *
+     * @param apiKey
+     * @param limit
+     * @param offset
+     * @param addresses
+     * @param days
+     * @return
+     */
     public String exportTags(String apiKey, int limit, int offset, int addresses, int days){
         baseURL += "export/tags/";
         baseURL += "?key=" + apiKey;
@@ -41,18 +56,32 @@ public class DashboardUtil {
         return httpQuery.sendGet(baseURL);
     }
 
-    //https://proxycheck.io/dashboard/export/tags/?key=111111-222222-333333-444444&limit=100&offset=0&addresses=1&start=1566648271&end=1566345271
+    /**
+     *
+     * @param apiKey APIKey from https://proxycheck.io/
+     * @param limit Limit of results to show
+     * @param offset Number of results to offset the search
+     * @param start start time of period of lookup
+     * @param end end time of period of lookup
+     * @return
+     */
     public String exportTags(String apiKey, int limit, int offset, long start, long end){
         baseURL += "export/tags/";
         baseURL += "?key=" + apiKey;
         baseURL += "&limit=" + limit;
         baseURL += "&offset=" + offset;
-        baseURL += "&start==" + start;
+        baseURL += "&start=" + start;
         baseURL += "&end=" + end;
         return httpQuery.sendGet(baseURL);
     }
 
     //https://proxycheck.io/dashboard/export/usage/?key=111111-222222-333333-444444
+
+    /**
+     *
+     * @param apiKey APIKey from https://proxycheck.io/
+     * @return
+     */
     public String exportUsage(String apiKey){
         baseURL += "export/usage/";
         baseURL += "key=" + apiKey;
@@ -63,8 +92,8 @@ public class DashboardUtil {
 
     /**
      *
-     * @param useJsonFormat
-     * @param apiKey
+     * @param useJsonFormat boolean value of whether to get response as JSON formatted String
+     * @param apiKey APIKey from https://proxycheck.io/
      * @return
      */
     public String exportQueries(boolean useJsonFormat, String apiKey){
@@ -85,8 +114,8 @@ public class DashboardUtil {
     /**
      * HANDLES [LIST and CLEAR] actions for Blacklist, Whitelist, and CORs
      *
-     * @param listSelection [whitelist/blacklist/cors]
-     * @param listAction [list/clear]
+     * @param listSelection [whitelist, blacklist, cors]
+     * @param listAction [list, clear]
      * @param apiKey APIKey from https://proxycheck.io/
      * @return String api Response.
      */

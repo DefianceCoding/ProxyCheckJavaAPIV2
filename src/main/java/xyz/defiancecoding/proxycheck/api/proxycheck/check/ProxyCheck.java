@@ -55,32 +55,47 @@ public class ProxyCheck {
 
 
     public ProxyResults mapThenReturnResult(String ip)  {
-
+        ProxyResults result = new ProxyResults();
         try {
 
-            ProxyResults result = new ProxyResults();
-
             JsonNode rawNode = getRawJsonNode(ip);
+
+            result.setStatus(rawNode.get("status").asText());
+            result.setNode(rawNode.get("node").asText());
+            result.setQueryTime(rawNode.get("query time").asText());
+
             ObjectMapper mapper = new ObjectMapper();
-            JsonNode subNode = mapper.readTree(rawNode.get(ip).asText());
-            System.out.println("tempTest: Map: " + subNode.toPrettyString());
+            System.out.println("readTree: " + mapper.readTree(rawNode.get(ip).asText()));
+            JsonNode subNode = mapper.readTree(String.valueOf(rawNode.get(ip)));
+
+            System.out.println("RawNode: " + rawNode);
+            System.out.println("subNode: " + subNode);
+
+
+
             result.setIp(ip);
-            result.setAsn(subNode.get("asn").asText());
             result.setProvider(subNode.get("provider").asText());
             result.setContinent(subNode.get("continent").asText());
             result.setCountry(subNode.get("country").asText());
+            result.setCity(subNode.get("city").asText());
+            result.setRegion(subNode.get("region").asText());
+            result.setRegionCode(subNode.get("regioncode").asText());
+            result.setLatitude(subNode.get("latitude").asText());
+            result.setLongitude(subNode.get("longitude").asText());
             result.setIsoCode(subNode.get("isocode").asText());
-            result.setLatitude(subNode.get("latitude").asDouble());
-            result.setLongitude(subNode.get("longitude").asDouble());
             result.setProxy(subNode.get("proxy").asText());
             result.setType(subNode.get("type").asText());
-            result.setRisk(subNode.get("risk").asInt());
+            result.setPort(subNode.get("port").asText("0000").toString());
+            result.setRisk(subNode.get("risk").asText());
+            result.setLastSeenHuman(subNode.get("last seen human").asText());
+            result.setLastSeenUnix(subNode.get("last seen unix").asText());
 
             return result;
+
         } catch (IOException ex) {
             ex.printStackTrace();
         }
-        return null;
+        return result;
     }
 
 
