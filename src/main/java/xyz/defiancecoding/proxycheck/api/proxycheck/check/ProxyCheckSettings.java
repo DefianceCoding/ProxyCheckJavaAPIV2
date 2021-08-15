@@ -2,7 +2,7 @@ package xyz.defiancecoding.proxycheck.api.proxycheck.check;
 
 public class ProxyCheckSettings {
 
-    private String api_key = "504152-5u7n30-bv3o81-187971";
+    private String api_key = "6t0l02-643w48-111876-2m1i08";
     private boolean check_vpn = true;
     private boolean check_asn = true;
     private boolean check_node = true;
@@ -10,9 +10,9 @@ public class ProxyCheckSettings {
     private int check_risk = 1;
     private boolean check_port = true;
     private boolean check_seen = true;
-    private int max_detection_days;
+    private int max_detection_days = 7;
     private String ver;
-    private String set_tag = "Defiant-Proxy-Detection-System";
+    private String tag = "Defiant-Proxy-Detection-System";
 
     public String getApi_key(){
         return this.api_key;
@@ -86,11 +86,11 @@ public class ProxyCheckSettings {
     }
 
     public String getTag() {
-        return set_tag;
+        return tag;
     }
 
     public void setTag(String set_tag) {
-        this.set_tag = set_tag;
+        this.tag = set_tag;
     }
 
     public void setVer(String ver) {

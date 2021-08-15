@@ -24,7 +24,7 @@ public class DashboardUtil {
      * @param apiKey APIKey from https://proxycheck.io/
      * @param limit Limit of results to show
      * @param offset Number of results to offset the search
-     * @return
+     * @return String response from APICall
      */
     public String exportDetections(boolean useJsonFormat, String apiKey, int limit, int offset){
         int useJson = useJsonFormat ? 1 : 0;
@@ -39,12 +39,12 @@ public class DashboardUtil {
 
     /**
      *
-     * @param apiKey
-     * @param limit
-     * @param offset
-     * @param addresses
-     * @param days
-     * @return
+     * @param apiKey APIKey from https://proxycheck.io/
+     * @param limit Limit of results to show
+     * @param offset Number of results to offset the search
+     * @param addresses Number of different addresses to search for
+     * @param days Amount of days back to search in the api
+     * @return String response from APICall
      */
     public String exportTags(String apiKey, int limit, int offset, int addresses, int days){
         baseURL += "export/tags/";
@@ -63,9 +63,10 @@ public class DashboardUtil {
      * @param offset Number of results to offset the search
      * @param start start time of period of lookup
      * @param end end time of period of lookup
-     * @return
+     * @return String response from APICall
      */
     public String exportTags(String apiKey, int limit, int offset, long start, long end){
+        resetBaseURL();
         baseURL += "export/tags/";
         baseURL += "?key=" + apiKey;
         baseURL += "&limit=" + limit;
@@ -80,11 +81,12 @@ public class DashboardUtil {
     /**
      *
      * @param apiKey APIKey from https://proxycheck.io/
-     * @return
+     * @return String response from APICall
      */
     public String exportUsage(String apiKey){
+        resetBaseURL();
         baseURL += "export/usage/";
-        baseURL += "key=" + apiKey;
+        baseURL += "?key=" + apiKey;
         return httpQuery.sendGet(baseURL);
     }
 
@@ -94,9 +96,10 @@ public class DashboardUtil {
      *
      * @param useJsonFormat boolean value of whether to get response as JSON formatted String
      * @param apiKey APIKey from https://proxycheck.io/
-     * @return
+     * @return String response from APICall
      */
     public String exportQueries(boolean useJsonFormat, String apiKey){
+        resetBaseURL();
         int useJson = useJsonFormat ? 1 : 0;
         baseURL += "export/queries/";
         baseURL += "?json=" + useJson;
@@ -114,15 +117,19 @@ public class DashboardUtil {
     /**
      * HANDLES [LIST and CLEAR] actions for Blacklist, Whitelist, and CORs
      *
-     * @param listSelection [whitelist, blacklist, cors]
-     * @param listAction [list, clear]
+     * @param listSelection Valid params = ListSelection.[BLACKLIST/WHITELIST/CORS]
+     * @param listAction Valid params = ListAction.[LIST/CLEAR]
      * @param apiKey APIKey from https://proxycheck.io/
-     * @return String api Response.
+     * @return String response from APICall
      */
 
-    public String basicListAccess(String listSelection, String listAction, String apiKey){
-        baseURL += listSelection + "/" + listAction + "/";
-        baseURL += "?key=" + apiKey;
+    public String basicListAccess(ListSelection listSelection, ListAction listAction, String apiKey) throws InvalidParameterException {
+        resetBaseURL();
+        if (listAction.equals(ListAction.ADD) || listAction.equals(ListAction.REMOVE) || listAction.equals(ListAction.SET)){
+            throw new InvalidParameterException("You cannot add POST data to this method");
+        }
+        baseURL += listSelection.getListType() + "/" + listAction.getAction();
+        baseURL += "/?key=" + apiKey;
         return httpQuery.sendGet(baseURL);
     }
 
@@ -131,25 +138,32 @@ public class DashboardUtil {
      *
      * HANDLES [add/remove/set]
      *
-     * @param listSelection [blacklist, whitelist, cors]
-     * @param listAction [add/remove/set]
+     * @param listSelection Valid params = ListSelection.[BLACKLIST/WHITELIST/CORS]
+     * @param listAction Valid params = ListAction.[ADD/REMOVE/SET]
      * @param apiKey APIKey from https://proxycheck.io/
      * @param ipArray List of IPs the action should be applied to
-     * @return String api response.
+     * @return String response from APICall
      * @throws InvalidParameterException
      */
-    public String modifyList(String listSelection, String listAction, String apiKey, ArrayList<String> ipArray) throws InvalidParameterException {
-        baseURL += listSelection + "/" + listAction + "/";
+    public String modifyList(ListSelection listSelection, ListAction listAction, String apiKey, ArrayList<String> ipArray) throws InvalidParameterException {
+        resetBaseURL();
+        baseURL += listSelection.getListType() + "/" + listAction.getAction() + "/";
         baseURL += "?key=" + apiKey;
         List<NameValuePair> postParams = new ArrayList<>();
 
+        System.out.println("DebugURL: " + baseURL + " postParams: " + postParams);
+
         if (ipArray != null) {
-            if (listAction.contains("clear") || listAction.contains("list")){
+            if (listAction.equals(ListAction.LIST) || listAction.equals(ListAction.CLEAR)){
                 throw new InvalidParameterException("You cannot send an ipArray with ACTIONS:[LIST/CLEAR] || VALID VALUES [ADD/REMOVE/SET]");
             }
             postParams.add(new BasicNameValuePair("data", ipArray.toString()));
         }
 
-        return httpQuery.sendPOST(baseURL, true, postParams);
+        return httpQuery.sendPOST(baseURL, postParams);
+    }
+
+    private void resetBaseURL(){
+        baseURL = "https://proxycheck.io/dashboard/";
     }
 }

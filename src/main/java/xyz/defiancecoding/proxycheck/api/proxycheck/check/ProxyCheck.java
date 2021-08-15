@@ -1,5 +1,6 @@
 package xyz.defiancecoding.proxycheck.api.proxycheck.check;
 
+import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import xyz.defiancecoding.proxycheck.api.webconnection.HTTPQuery;
@@ -23,7 +24,7 @@ public class ProxyCheck {
         baseURL += "&node=" + (settings.isCheck_node() ? 1 : 0 );
         baseURL += "&time=" + (settings.isCheck_port() ? 1 : 0 );
         baseURL += "&risk=" + settings.setRiskLevel();
-        baseURL += "&port=" + (settings.isCheck_port());
+        baseURL += "&port=" + (settings.isCheck_port() ? 1 : 0);
         baseURL += "&seen=" + (settings.isCheck_seen() ? 1 : 0);
         baseURL += "&time=" + (settings.isCheck_time() ? 1 : 0);
         baseURL += "&days=" + settings.getMax_detection_days();
@@ -42,19 +43,15 @@ public class ProxyCheck {
     }
 
 
-    //If you want to use JacksonDatabind for JsonHandling use the following below
-    //Otherwise remove this method and replace it for one that will fit your program
+
     public JsonNode getRawJsonNode(String ip) throws IOException {
-
         ObjectMapper mapper = new ObjectMapper();
-        JsonNode jsonNode = mapper.readTree(getLookupResponse(ip));
-
-        System.out.println("getRawJsonNode(); #JsonNode toString - " + jsonNode.toPrettyString());
-        return jsonNode;
+        return mapper.readTree(getLookupResponse(ip));
     }
 
 
-    public ProxyResults mapThenReturnResult(String ip)  {
+    public ProxyResults getAndMapResults(String ip) {
+
         ProxyResults result = new ProxyResults();
         try {
 
@@ -72,25 +69,32 @@ public class ProxyCheck {
             System.out.println("subNode: " + subNode);
 
 
-
             result.setIp(ip);
-            result.setProvider(subNode.get("provider").asText());
-            result.setContinent(subNode.get("continent").asText());
-            result.setCountry(subNode.get("country").asText());
-            result.setCity(subNode.get("city").asText());
-            result.setRegion(subNode.get("region").asText());
-            result.setRegionCode(subNode.get("regioncode").asText());
-            result.setLatitude(subNode.get("latitude").asText());
-            result.setLongitude(subNode.get("longitude").asText());
-            result.setIsoCode(subNode.get("isocode").asText());
-            result.setProxy(subNode.get("proxy").asText());
-            result.setType(subNode.get("type").asText());
-            result.setPort(subNode.get("port").asText("0000").toString());
-            result.setRisk(subNode.get("risk").asText());
-            result.setLastSeenHuman(subNode.get("last seen human").asText());
-            result.setLastSeenUnix(subNode.get("last seen unix").asText());
+            if (subNode.get("provider") != null) result.setProvider(subNode.get("provider").asText());
+            if (subNode.get("continent") != null) result.setContinent(subNode.get("continent").asText());
+            if (subNode.get("country") != null) result.setCountry(subNode.get("country").asText());
+            if (subNode.get("city") != null) result.setCity(subNode.get("city").asText());
+            if (subNode.get("region") != null) result.setRegion(subNode.get("region").asText());
+            if (subNode.get("regioncode") != null) result.setRegionCode(subNode.get("regioncode").asText());
+            if (subNode.get("latitude") != null) result.setLatitude(subNode.get("latitude").asText());
+            if (subNode.get("longitude") != null) result.setLongitude(subNode.get("longitude").asText());
+            if (subNode.get("isocode") != null) result.setIsoCode(subNode.get("isocode").asText());
+            if (subNode.get("proxy") != null) result.setProxy(subNode.get("proxy").asText());
+            if (subNode.get("type") != null) result.setType(subNode.get("type").asText());
+            if (subNode.get("port") != null) result.setPort(subNode.get("port").asText("0000"));
+            if (subNode.get("risk") != null) result.setRisk(subNode.get("risk").asText());
+            if (subNode.get("last seen human") != null) result.setLastSeenHuman(subNode.get("last seen human").asText());
+            if (subNode.get("last seen unix") != null) result.setLastSeenUnix(subNode.get("last seen unix").asText());
 
-            return result;
+            JsonNode attackHistory = subNode.get("attack history");
+            if (attackHistory != null) {
+                result.setTotal(attackHistory.get("Total").asText());
+                result.setVulnerabilityProbing(attackHistory.get("Vulnerability Probing").asText());
+                result.setForumSpam(attackHistory.get("Forum Spam").asText());
+                result.setRegistrationAttempt(attackHistory.get("Registration Attempt").asText());
+                result.setLoginAttempt(attackHistory.get("Login Attempt").asText());
+            }
+            System.out.println("Result: " + result);
 
         } catch (IOException ex) {
             ex.printStackTrace();
