@@ -29,7 +29,10 @@ public class ProxyResults
   private String lastSeenHuman;
   private String lastSeenUnix;
   private String queryTime;
+
+
   
+
   public ProxyResults newInstance(String status, String node, String ip, String asn, String provider, String continent, String country, String city, String region, String regionCode, String latitude, String longitude, String isoCode, String proxy, String type, String port, String risk, HashMap<String, String> attackHistory, String total, String vulnerabilityProbing, String loginAttempt, String registrationAttempt, String lastSeenHuman, String lastSeenUnix, String queryTime) {
     ProxyResults results = new ProxyResults();
     

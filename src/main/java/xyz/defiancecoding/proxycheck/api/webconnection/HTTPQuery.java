@@ -23,18 +23,9 @@ public class HTTPQuery
   private final CloseableHttpClient httpClient = HttpClients.createDefault();
 
 
-
-
-  
   private void close() throws IOException {
     this.httpClient.close();
   }
-
-
-
-
-
-
   
   public String sendGet(String url) {
     HttpGet get = new HttpGet(url);
@@ -51,13 +42,6 @@ public class HTTPQuery
     return null;
   }
 
-
-
-
-
-
-
-  
   public String sendPOST(String url, List<NameValuePair> postData) {
     HttpPost post = new HttpPost(url);
     
@@ -86,9 +70,3 @@ public class HTTPQuery
     } 
   }
 }
-
-
-/* Location:              /home/justin/IdeaProjects/ProxyCheckJavaAPI/target/ProxyCheckJavaAPI-1.0-SNAPSHOT.jar!/xyz/defiancecoding/proxycheck/api/webconnection/HTTPQuery.class
- * Java compiler version: 8 (52.0)
- * JD-Core Version:       1.1.3
- */

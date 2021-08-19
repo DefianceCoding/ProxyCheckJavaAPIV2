@@ -7,13 +7,17 @@ import java.io.IOException;
 import xyz.defiancecoding.proxycheck.api.proxycheck.check.results.ProxyResults;
 import xyz.defiancecoding.proxycheck.api.webconnection.HTTPQuery;
 
-
-
 public class ProxyCheck
 {
   private final ProxyCheckSettings settings = new ProxyCheckSettings();
   private final HTTPQuery httpQuery = new HTTPQuery();
 
+  /**
+   * Builds the API URL based on selected settings
+   *
+   * @param ip IP address you want to query
+   * @return jsonString response from HTTPQuery
+   */
   private String urlBuilder(String ip) {
     String baseURL = "http://proxycheck.io/v2/" + ip;
     baseURL = baseURL + "?key=" + this.settings.getApi_key();
@@ -21,7 +25,7 @@ public class ProxyCheck
     baseURL = baseURL + "&asn=" + (this.settings.isCheck_asn() ? 1 : 0);
     baseURL = baseURL + "&node=" + (this.settings.isCheck_node() ? 1 : 0);
     baseURL = baseURL + "&time=" + (this.settings.isCheck_port() ? 1 : 0);
-    baseURL = baseURL + "&risk=" + this.settings.setRiskLevel();
+    baseURL = baseURL + "&risk=" + this.settings.getRiskLevel();
     baseURL = baseURL + "&port=" + (this.settings.isCheck_port() ? 1 : 0);
     baseURL = baseURL + "&seen=" + (this.settings.isCheck_seen() ? 1 : 0);
     baseURL = baseURL + "&time=" + (this.settings.isCheck_time() ? 1 : 0);
@@ -34,21 +38,35 @@ public class ProxyCheck
     return baseURL;
   }
 
-
-  
+  /**
+   * Builds the API URL based on selected settings
+   *
+   * @param ip IP address you want to query
+   * @return jsonString response from HTTPQuery in STRING value
+   */
   public String getLookupResponse(String ip) {
     return this.httpQuery.sendGet(urlBuilder(ip));
   }
 
 
-  
+  /**
+   * Builds the API URL based on selected settings
+   *
+   * @param ip IP address you want to query
+   * @return jsonString response from HTTPQuery in JsonNode value
+   */
   public JsonNode getRawJsonNode(String ip) throws IOException {
     ObjectMapper mapper = new ObjectMapper();
     return mapper.readTree(getLookupResponse(ip));
   }
 
 
-  
+  /**
+   * Maps the results from the provided IP provided from the API to a class with getters and setters
+   * @param ip IP address you want to query and map
+   * @return ProxyResults Object with built-in getters and setters
+   * @see ProxyResults
+   */
   public ProxyResults getAndMapResults(String ip) {
     ProxyResults result = new ProxyResults();
     
