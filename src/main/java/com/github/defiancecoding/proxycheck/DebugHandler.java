@@ -1,4 +1,4 @@
-package xyz.defiancecoding.proxycheck;
+package com.github.defiancecoding.proxycheck;
 
 public class DebugHandler {
 

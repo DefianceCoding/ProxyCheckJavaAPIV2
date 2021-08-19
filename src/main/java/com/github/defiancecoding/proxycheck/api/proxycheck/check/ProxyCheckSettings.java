@@ -1,4 +1,4 @@
-package xyz.defiancecoding.proxycheck.api.proxycheck.check;
+package com.github.defiancecoding.proxycheck.api.proxycheck.check;
 
 public class ProxyCheckSettings
 {

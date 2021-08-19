@@ -7,6 +7,20 @@
     <groupId>xyz.defiancecoding</groupId>
     <artifactId>ProxyCheckJavaAPI</artifactId>
     <version>1.0-SNAPSHOT</version>
+    <packaging>jar</packaging>
+
+    <licenses>
+        <license>
+            <name>Apache License, Version 2.0</name>
+            <url>http://www.apache.org/licenses/LICENSE-2.0.txt</url>
+            <distribution>repo</distribution>
+        </license>
+    </licenses>
+
+    <scm>
+        <url>https://svn.apache.org/viewvc/maven</url>
+    </scm>
+
 
     <properties>
         <maven.compiler.source>8</maven.compiler.source>

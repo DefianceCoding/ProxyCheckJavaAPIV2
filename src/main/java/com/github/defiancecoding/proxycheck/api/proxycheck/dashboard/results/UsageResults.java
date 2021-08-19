@@ -1,4 +1,4 @@
-package xyz.defiancecoding.proxycheck.api.proxycheck.dashboard.results;
+package com.github.defiancecoding.proxycheck.api.proxycheck.dashboard.results;
 
 
 

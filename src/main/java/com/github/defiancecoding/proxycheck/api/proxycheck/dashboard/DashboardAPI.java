@@ -1,12 +1,14 @@
-package xyz.defiancecoding.proxycheck.api.proxycheck.dashboard;
+package com.github.defiancecoding.proxycheck.api.proxycheck.dashboard;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.util.ArrayList;
 import java.util.HashMap;
-import xyz.defiancecoding.proxycheck.api.proxycheck.dashboard.results.UsageResults;
-import xyz.defiancecoding.proxycheck.exceptions.InvalidParameterException;
+
+import com.github.defiancecoding.proxycheck.api.proxycheck.dashboard.results.UsageResults;
+import com.github.defiancecoding.proxycheck.api.webconnection.HTTPQuery;
+import com.github.defiancecoding.proxycheck.exceptions.InvalidParameterException;
 
 
 public class DashboardAPI
@@ -20,7 +22,7 @@ public class DashboardAPI
    * @param apiKey APIKey from https://proxycheck.io
    * @param listSelection Which list do you want to modify
    * @return jsonString response from HTTPQuery;
-   * @see xyz.defiancecoding.proxycheck.api.webconnection.HTTPQuery
+   * @see HTTPQuery
    * @throws InvalidParameterException
    */
   public String getList(String apiKey, ListSelection listSelection) throws InvalidParameterException {

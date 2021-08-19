@@ -1,4 +1,4 @@
-package xyz.defiancecoding.proxycheck.exceptions;
+package com.github.defiancecoding.proxycheck.exceptions;
 
 public class InvalidHTTPQueryException
   extends Exception {

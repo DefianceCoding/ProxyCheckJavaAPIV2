@@ -1,4 +1,4 @@
-package xyz.defiancecoding.proxycheck.api.proxycheck.check.results;
+package com.github.defiancecoding.proxycheck.api.proxycheck.check.results;
 
 import java.util.HashMap;
 

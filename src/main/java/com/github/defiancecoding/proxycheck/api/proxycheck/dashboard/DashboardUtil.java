@@ -1,12 +1,13 @@
-package xyz.defiancecoding.proxycheck.api.proxycheck.dashboard;
+package com.github.defiancecoding.proxycheck.api.proxycheck.dashboard;
 
 import java.util.ArrayList;
 import java.util.List;
+
+import com.github.defiancecoding.proxycheck.DebugHandler;
+import com.github.defiancecoding.proxycheck.exceptions.InvalidParameterException;
 import org.apache.http.NameValuePair;
 import org.apache.http.message.BasicNameValuePair;
-import xyz.defiancecoding.proxycheck.DebugHandler;
-import xyz.defiancecoding.proxycheck.api.webconnection.HTTPQuery;
-import xyz.defiancecoding.proxycheck.exceptions.InvalidParameterException;
+import com.github.defiancecoding.proxycheck.api.webconnection.HTTPQuery;
 
 
 public class DashboardUtil

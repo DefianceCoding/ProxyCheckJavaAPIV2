@@ -1,4 +1,4 @@
-package xyz.defiancecoding.proxycheck.api.proxycheck.dashboard;
+package com.github.defiancecoding.proxycheck.api.proxycheck.dashboard;
 
 public enum ListSelection
 {

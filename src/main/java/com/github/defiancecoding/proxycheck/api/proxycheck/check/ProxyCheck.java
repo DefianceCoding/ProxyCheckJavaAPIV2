@@ -1,11 +1,11 @@
-package xyz.defiancecoding.proxycheck.api.proxycheck.check;
+package com.github.defiancecoding.proxycheck.api.proxycheck.check;
 
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 
-import xyz.defiancecoding.proxycheck.api.proxycheck.check.results.ProxyResults;
-import xyz.defiancecoding.proxycheck.api.webconnection.HTTPQuery;
+import com.github.defiancecoding.proxycheck.api.proxycheck.check.results.ProxyResults;
+import com.github.defiancecoding.proxycheck.api.webconnection.HTTPQuery;
 
 public class ProxyCheck
 {
