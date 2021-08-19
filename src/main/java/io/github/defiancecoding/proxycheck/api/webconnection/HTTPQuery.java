@@ -1,11 +1,11 @@
-package com.github.defiancecoding.proxycheck.api.webconnection;
+package io.github.defiancecoding.proxycheck.api.webconnection;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.github.defiancecoding.proxycheck.exceptions.InvalidHTTPQueryException;
+import io.github.defiancecoding.proxycheck.exceptions.InvalidHTTPQueryException;
 import org.apache.http.HttpEntity;
 import org.apache.http.NameValuePair;
 import org.apache.http.client.entity.UrlEncodedFormEntity;

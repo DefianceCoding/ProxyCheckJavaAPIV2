@@ -1,4 +1,4 @@
-package com.github.defiancecoding.proxycheck.exceptions;
+package io.github.defiancecoding.proxycheck.exceptions;
 
 public class InvalidParameterException
   extends Exception {
