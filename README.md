@@ -7,6 +7,38 @@ This API is for use with https://proxycheck.io/ for proxy detection services.
 
 # Usage
 
+**Main API**
+```xml
+<!-- Main API -->
+<dependency>
+  <groupId>io.github.defiancecoding</groupId>
+  <artifactId>ProxyCheckJavaAPI</artifactId>
+  <version>1.0-SNAPSHOT</version>
+</dependency>
+
+```
+
+
+**Side stuff** 
+```xml
+
+<!-- SOURCE CODE -->
+<dependency>
+  <groupId>io.github.defiancecoding</groupId>
+  <artifactId>ProxyCheckJavaAPI</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <classifier>sources</classifier>
+</dependency>
+
+<!-- JAVA DOCS -->
+<dependency>
+  <groupId>io.github.defiancecoding</groupId>
+  <artifactId>ProxyCheckJavaAPI</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <classifier>javadoc</classifier>
+</dependency>
+```
+
 
 ## Dashboard
 
