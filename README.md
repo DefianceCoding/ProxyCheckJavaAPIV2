@@ -210,8 +210,27 @@ public class ProxyCheck {
 ```
 
 
+# To Help Others Find!
+
+If you feel like it, and want your software posted here that uses this API, feel free to email me!
+DefianceCoding@gmail.com, In your email please follow the current as I have a system scrapping my emails for the Subject Line.
+
+Subject must include the following word somewhere "ProxyCheckAPI List Request" - this is not CaSe SeNsItIvE.
+In the body of the email, please provide all the links to your Software.
+
+ExampleMail: 
+Subject: ProxyCheck list reuest
+
+body: 
+SourceCode(Optional): LinkHere
+Link To Distribution: LinkHere
+Link To API Documentation(Optional): LinkHere
 
 
+
+# LIST OF SOFTWARE USING CURRENT API
+
+Make your request today!
 
 # Legal
 - I am not affiliated with https://proxycheck.io/ and it's trademarks and copyrights, they are their own entity seperate from me (DefianceCoding). I am a freelancer on the side that likes to take on projects and had the permission to make, host, and distribute this package.
