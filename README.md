@@ -1,11 +1,11 @@
 # Welcome to ProxyCheck Java API!
 
-# !PAGE UNDER CONSTRUCTION!
-SEE JAVADOCS/SOURCE CODE FOR HELP UNTIL I GET FINISHED
-Java-Docs: https://defiancecoding.github.io/
-
+Java-Docs: https://defiancecoding.github.io/ProxyCheckJavaAPIV2/
+Or view the Enviroments in the side bar
 
 This API is for use with https://proxycheck.io/ for proxy detection services.
+
+## THIS API IS NEW PLEASE REPORT ANY ISSUES YOU MAY HAVE!
 
 # Usage
 
