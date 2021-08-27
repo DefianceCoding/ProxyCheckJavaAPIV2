@@ -54,7 +54,7 @@ compile "io.github.defiancecoding:ProxyCheckJavaAPI:1.0-SNAPSHOT"
 I have a webserver being setup with jenkins for automatic version controlling and all that, but for now the OTHER option is
 going to be downloading the jars and using them as a local repo
 
-links to current compiled jars (Source matching DateStamp: AUG. 26, 9:25PM CST)
+links to current compiled jars (Source matching DateStamp: AUG. 26, 9:25PM CST) - https://issues.sonatype.org/browse/OSSRH-72444
 
 ## Dashboard
 
