@@ -9,6 +9,7 @@ This API is for use with https://proxycheck.io/ for proxy detection services.
 
 # Usage
 
+## MAVEN
 **Main API**
 ```xml
 <!-- Main API -->
@@ -41,6 +42,19 @@ This API is for use with https://proxycheck.io/ for proxy detection services.
 </dependency>
 ```
 
+
+## GRADLE
+
+```xml
+compile "io.github.defiancecoding:ProxyCheckJavaAPI:1.0-SNAPSHOT"
+```
+
+## OTHER
+
+I have a webserver being setup with jenkins for automatic version controlling and all that, but for now the OTHER option is
+going to be downloading the jars and using them as a local repo
+
+links to current compiled jars (Source matching DateStamp: AUG. 26, 9:25PM CST)
 
 ## Dashboard
 
