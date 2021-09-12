@@ -10,8 +10,24 @@ This API is for use with https://proxycheck.io/ for proxy detection services.
 # Usage
 
 ## MAVEN
+
+
+
+
 **Main API**
 ```xml
+
+<repositories>
+    <repository>
+        <id>oss-sonatype</id>
+        <name>oss-sonatype</name>
+        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
+        <snapshots>
+            <enabled>true</enabled>
+        </snapshots>
+    </repository>
+</repositories>
+
 <!-- Main API -->
 <dependency>
   <groupId>io.github.defiancecoding</groupId>
