@@ -57,6 +57,24 @@ This API is for use with https://proxycheck.io/ for proxy detection services.
   <classifier>javadoc</classifier>
 </dependency>
 ```
+!IF THE ABOVE DOESNT SET YOU RIGHT YOU CAN USE THIS ONE!
+```xml
+    <repositories>
+        <repository>
+            <id>defiancecoding</id>
+            <url>http://defiancecoding.net/releases</url>
+        </repository>
+    </repositories>
+
+    <dependencies>
+        <!-- ProxyCheck.IO API for java -->
+        <dependency>
+            <groupId>io.github.defiancecoding</groupId>
+            <artifactId>ProxyCheckJavaAPI</artifactId>
+            <version>1.0</version>
+        </dependency>
+</dependencies>
+```
 
 
 ## GRADLE
