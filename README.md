@@ -10,54 +10,7 @@ This API is for use with https://proxycheck.io/ for proxy detection services.
 # Usage
 
 ## MAVEN
-
-
-
-
-**Main API**
-```xml
-
-<repositories>
-    <repository>
-        <id>oss-sonatype</id>
-        <name>oss-sonatype</name>
-        <url>https://oss.sonatype.org/content/repositories/snapshots/</url>
-        <snapshots>
-            <enabled>true</enabled>
-        </snapshots>
-    </repository>
-</repositories>
-
-<!-- Main API -->
-<dependency>
-  <groupId>io.github.defiancecoding</groupId>
-  <artifactId>ProxyCheckJavaAPI</artifactId>
-  <version>1.0-SNAPSHOT</version>
-</dependency>
-
-```
-
-
-**Side stuff** 
-```xml
-
-<!-- SOURCE CODE -->
-<dependency>
-  <groupId>io.github.defiancecoding</groupId>
-  <artifactId>ProxyCheckJavaAPI</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <classifier>sources</classifier>
-</dependency>
-
-<!-- JAVA DOCS -->
-<dependency>
-  <groupId>io.github.defiancecoding</groupId>
-  <artifactId>ProxyCheckJavaAPI</artifactId>
-  <version>1.0-SNAPSHOT</version>
-  <classifier>javadoc</classifier>
-</dependency>
-```
-!IF THE ABOVE DOESNT SET YOU RIGHT YOU CAN USE THIS ONE!
+The Maven host was giving me issues, so decided to go on and host it myself
 ```xml
     <repositories>
         <repository>
@@ -76,6 +29,21 @@ This API is for use with https://proxycheck.io/ for proxy detection services.
 </dependencies>
 ```
 
+if you have issues like so 
+```bash NO CLASS DEF FOUND ERROR!
+[17:38:21 ERROR]: Exception in thread "Thread-4" java.lang.NoClassDefFoundError: io/github/defiancecoding/proxycheck/api/proxycheck/check/ProxyCheckSettings
+```
+
+Change the maven depency to 
+    <dependencies>
+        <!-- ProxyCheck.IO API for java -->
+        <dependency>
+            <groupId>io.github.defiancecoding</groupId>
+            <artifactId>ProxyCheckJavaAPI</artifactId>
+            <version>1.0</version>
+            <scope>compile</scope>
+        </dependency>
+</dependencies>
 
 ## GRADLE
 
@@ -83,12 +51,6 @@ This API is for use with https://proxycheck.io/ for proxy detection services.
 compile "io.github.defiancecoding:ProxyCheckJavaAPI:1.0-SNAPSHOT"
 ```
 
-## OTHER
-
-I have a webserver being setup with jenkins for automatic version controlling and all that, but for now the OTHER option is
-going to be downloading the jars and using them as a local repo
-
-links to current compiled jars (Source matching DateStamp: AUG. 26, 9:25PM CST) - https://issues.sonatype.org/browse/OSSRH-72444
 
 ## Dashboard
 
