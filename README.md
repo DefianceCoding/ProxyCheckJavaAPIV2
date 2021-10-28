@@ -35,6 +35,7 @@ if you have issues like so
 ```
 
 Change the maven depency to 
+```xml
     <dependencies>
         <!-- ProxyCheck.IO API for java -->
         <dependency>
@@ -44,7 +45,7 @@ Change the maven depency to
             <scope>compile</scope>
         </dependency>
 </dependencies>
-
+```
 ## GRADLE
 
 ```xml
