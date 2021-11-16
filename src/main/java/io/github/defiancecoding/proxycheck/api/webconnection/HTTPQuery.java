@@ -61,12 +61,11 @@ public class HTTPQuery
       if (response.getStatusLine().toString().contains("200")) {
         return responseEntity;
       }
-      throw new InvalidHTTPQueryException("[Defiant-Debug] Error getting result from API: " + response.getStatusLine());
+      throw new InvalidHTTPQueryException("Error getting result from API: ResponseCode: " + response.getStatusLine());
     }
     catch (IOException|InvalidHTTPQueryException e) {
       e.printStackTrace();
-      
       return null;
-    } 
+    }
   }
 }

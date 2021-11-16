@@ -1,10 +1,5 @@
 package io.github.defiancecoding.proxycheck.api.proxycheck.dashboard.results;
 
-
-
-
-
-
 public class UsageResults
 {
   private int burstTokensAvailable;

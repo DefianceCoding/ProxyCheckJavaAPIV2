@@ -34,7 +34,6 @@ public class ProxyCheck
       baseURL = baseURL + "&ver=" + this.settings.getVer();
     }
     baseURL = baseURL + "&tag=" + this.settings.getTag();
-    
     return baseURL;
   }
 
@@ -54,6 +53,7 @@ public class ProxyCheck
    *
    * @param ip IP address you want to query
    * @return jsonString response from HTTPQuery in JsonNode value
+   * @throws IOException when jsonSource isnt valid
    */
   public JsonNode getRawJsonNode(String ip) throws IOException {
     ObjectMapper mapper = new ObjectMapper();
@@ -78,12 +78,7 @@ public class ProxyCheck
       result.setQueryTime(rawNode.get("query time").asText());
       
       ObjectMapper mapper = new ObjectMapper();
-      System.out.println("readTree: " + mapper.readTree(rawNode.get(ip).asText()));
       JsonNode subNode = mapper.readTree(String.valueOf(rawNode.get(ip)));
-      
-      System.out.println("RawNode: " + rawNode);
-      System.out.println("subNode: " + subNode);
-
       
       result.setIp(ip);
       if (subNode.get("provider") != null) result.setProvider(subNode.get("provider").asText()); 
@@ -109,8 +104,7 @@ public class ProxyCheck
         result.setForumSpam(attackHistory.get("Forum Spam").asText());
         result.setRegistrationAttempt(attackHistory.get("Registration Attempt").asText());
         result.setLoginAttempt(attackHistory.get("Login Attempt").asText());
-      } 
-      System.out.println("Result: " + result);
+      }
     }
     catch (IOException ex) {
       ex.printStackTrace();

@@ -3,6 +3,7 @@
   <component name="ExternalStorageConfigurationManager" enabled="true" />
   <component name="JavadocGenerationManager">
     <option name="OUTPUT_DIRECTORY" value="$USER_HOME$/Java-Docs" />
+    <option name="OPTION_SCOPE" value="package" />
     <option name="HEAP_SIZE" value="2048" />
   </component>
   <component name="MavenProjectsManager">

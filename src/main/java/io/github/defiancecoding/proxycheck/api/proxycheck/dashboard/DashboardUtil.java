@@ -118,7 +118,7 @@ public class DashboardUtil
    * @param listAction What to do with said list
    * @param apiKey APIKey from https://proxycheck.io
    * @return jsonString response from HTTPQuery
-   * @throws InvalidParameterException
+   * @throws InvalidParameterException Throws when you input an invalid parameter
    */
   public String basicListAccess(ListSelection listSelection, ListAction listAction, String apiKey) throws InvalidParameterException {
     resetBaseURL();
@@ -138,7 +138,7 @@ public class DashboardUtil
    * @param apiKey APIKey from https://proxycheck.io
    * @param ipArray List of ips you want to modify to the list
    * @return jsonString response from HTTPQuery
-   * @throws InvalidParameterException
+   * @throws InvalidParameterException Throws when you input an invalid parameter
    */
 
   public String modifyList(ListSelection listSelection, ListAction listAction, String apiKey, ArrayList<String> ipArray) throws InvalidParameterException {
@@ -152,11 +152,6 @@ public class DashboardUtil
         throw new InvalidParameterException("You cannot send an ipArray with ACTIONS:[LIST/CLEAR] || VALID VALUES [ADD/REMOVE/SET]");
       }
       postParams.add(new BasicNameValuePair("data", ipArray.toString()));
-
-      if (isDebug) {
-        System.out.println();
-      }
-
     }
     return this.httpQuery.sendPOST(this.baseURL, postParams);
   }

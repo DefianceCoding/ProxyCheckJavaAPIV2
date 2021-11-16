@@ -12,6 +12,12 @@ public class ProxyCheckExample {
     private static ProxyCheck proxyCheck = new ProxyCheck();
     private static ProxyCheckSettings settings = new ProxyCheckSettings();
 
+    /**
+     * Please note the settings below will throw a NPE , These settings are merely an example and you shouldn't need all
+     * the settings anywho.
+     *
+     */
+
     private static void setupProxycheckSettings(){
         settings.setApi_key("APIKey");
         settings.setCheck_vpn(true);

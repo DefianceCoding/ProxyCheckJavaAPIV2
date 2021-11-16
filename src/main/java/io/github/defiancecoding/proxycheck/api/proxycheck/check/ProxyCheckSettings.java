@@ -109,7 +109,8 @@ public class ProxyCheckSettings
    *
    *
    * When the risk flag is set to 2 we will still provide you with the above risk score,
-   * but you'll also receive individual counts for each type of attack we witnessed this IP performing across our customer network and our own honeypots within the days you specify by the &days= flag.
+   * but you'll also receive individual counts for each type of attack we witnessed this IP performing across our customer
+   * network and our own honeypots within the days you specify by the days flag.
    * @param check_risk the risk/strictness level
    */
   public void setRiskLevel(int check_risk) {
@@ -151,7 +152,7 @@ public class ProxyCheckSettings
 
   /**
    * When the days flag is supplied we will restrict our proxy results to between now and the amount of days you specify.
-   * For example if you supplied &days=2 we would only check our database for Proxies that we saw within the past 48 hours.
+   * For example if you supplied days=2 we would only check our database for Proxies that we saw within the past 48 hours.
    * By default, without this flag supplied we search within the past 7 days.
    * @return int - days to restrict results to?
    */
@@ -184,8 +185,8 @@ public class ProxyCheckSettings
   /**
    * Override the API version selection you have set in the customer dashboard with a different version.
    *
-   * You can view the version dates supported by &ver from within the dashboard.
-   * Format examples: &ver=16-August-2020 or &ver=17-November-2020
+   * You can view the version dates supported by ver from within the dashboard.
+   * Format examples: ver=16-August-2020 or ver=17-November-2020
    * @param ver apiVersion to use?
    */
   public void setVer(String ver) {

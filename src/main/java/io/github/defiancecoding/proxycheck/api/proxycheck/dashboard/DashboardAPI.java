@@ -23,7 +23,7 @@ public class DashboardAPI
    * @param listSelection Which list do you want to modify
    * @return jsonString response from HTTPQuery;
    * @see HTTPQuery
-   * @throws InvalidParameterException
+   * @throws InvalidParameterException Throws an exception when the params are invalid
    */
   public String getList(String apiKey, ListSelection listSelection) throws InvalidParameterException {
     return this.dashboardUtil.basicListAccess(listSelection, ListAction.LIST, apiKey);
@@ -37,7 +37,7 @@ public class DashboardAPI
    * @param listSelection Which list do you want to modify
    * @param ipArray Array of ips that you want to set a list to
    * @return jsonString response from HTTPQuery
-   * @throws InvalidParameterException
+   * @throws InvalidParameterException Throws an exception when the params are invalid
    */
   public String setList(String apiKey, ListSelection listSelection, ArrayList<String> ipArray) throws InvalidParameterException {
     return this.dashboardUtil.modifyList(listSelection, ListAction.SET, apiKey, ipArray);
@@ -49,7 +49,7 @@ public class DashboardAPI
    * @param apiKey APIKey from https://proxycheck.io
    * @param listSelection Which list do you want to modify
    * @return jsonString response from HTTPQuery
-   * @throws InvalidParameterException
+   * @throws InvalidParameterException Throws an exception when the params are invalid
    */
   public String clearList(String apiKey, ListSelection listSelection) throws InvalidParameterException {
     return this.dashboardUtil.basicListAccess(listSelection, ListAction.CLEAR, apiKey);
@@ -62,7 +62,7 @@ public class DashboardAPI
    * @param listSelection Which list do you want to modify
    * @param ipArray Array of ips to pass an ADD command with the HTTPQuery
    * @return jsonString response from HTTPQuery
-   * @throws InvalidParameterException
+   * @throws InvalidParameterException Throws an exception when the params are invalid
    */
   public String addArrayToList(String apiKey, ListSelection listSelection, ArrayList<String> ipArray) throws InvalidParameterException {
     return this.dashboardUtil.modifyList(listSelection, ListAction.ADD, apiKey, ipArray);
@@ -76,7 +76,7 @@ public class DashboardAPI
    * @param listSelection Which list do you want to modify
    * @param ipArray Array of ips to pass a REMOVE command with the HTTPQuery
    * @return jsonString response from HTTPQuery
-   * @throws InvalidParameterException
+   * @throws InvalidParameterException Throws an exception when the params are invalid
    */
   public String removeArrayFromList(String apiKey, ListSelection listSelection, ArrayList<String> ipArray) throws InvalidParameterException {
     return this.dashboardUtil.modifyList(listSelection, ListAction.REMOVE, apiKey, ipArray);
@@ -110,8 +110,8 @@ public class DashboardAPI
    * @param apiKey APIKey from https://proxycheck.io
    * @param limit number of tags to list
    * @param offset how many tags to skip
-   * @param start start date in long Milliseconds Time Units
-   * @param end start date in long Milliseconds Time Units
+   * @param startTime start date in long Milliseconds Time Units
+   * @param endTime end date in long Milliseconds Time Units
    * @return jsonString response from HTTPQuery
    */
   public String exportTags(String apiKey, int limit, int offset, long startTime, long endTime) {
@@ -139,7 +139,7 @@ public class DashboardAPI
    *
    * @param apiKey APIKey from https://proxycheck.io
    * @return HashMap of Queries stored as JsonNode
-   * @throws JsonProcessingException
+   * @throws JsonProcessingException throws when json isnt detected
    */
   public HashMap<String, JsonNode> mapExportedQueriesToArray(String apiKey) throws JsonProcessingException {
     ObjectMapper mapper = new ObjectMapper();
@@ -166,7 +166,7 @@ public class DashboardAPI
    * @param apikey String - APIKey from https://proxycheck.io
    * @return returns an instanced class with getters and setters for ease of access
    * @see UsageResults
-   * @throws JsonProcessingException
+   * @throws JsonProcessingException throws when json isnt detected
    */
   public UsageResults mapUsage(String apikey) throws JsonProcessingException {
     ObjectMapper mapper = new ObjectMapper();
