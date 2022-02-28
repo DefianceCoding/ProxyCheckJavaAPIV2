@@ -172,17 +172,20 @@ public class DashboardExample {
 package io.github.defiancecoding.proxycheck.examples;
 
 import com.fasterxml.jackson.databind.JsonNode;
+import io.github.defiancecoding.proxycheck.api.proxycheck.check.ProxyCheck;
 import io.github.defiancecoding.proxycheck.api.proxycheck.check.ProxyCheckSettings;
 import io.github.defiancecoding.proxycheck.api.proxycheck.check.results.ProxyResults;
 
 import java.io.IOException;
 
-public class ProxyCheck {
+public class ProxyCheckExample {
 
-    private static io.github.defiancecoding.proxycheck.api.proxycheck.check.ProxyCheck proxyCheck = new io.github.defiancecoding.proxycheck.api.proxycheck.check.ProxyCheck();
-    private static ProxyCheckSettings settings = new ProxyCheckSettings();
-    
-    private static void setupProxycheckSettings(){
+    /**
+     * Please note the settings below will throw a NPE , These settings are merely an example and you shouldn't need all
+     * the settings anyway.
+     */
+    private static ProxyCheck createProxyCheck(){
+        ProxyCheckSettings settings = new ProxyCheckSettings();
         settings.setApi_key("APIKey");
         settings.setCheck_vpn(true);
         settings.setCheck_asn(true);
@@ -194,11 +197,12 @@ public class ProxyCheck {
         settings.setMax_detection_days(7);
         settings.setVer("Ver");
         settings.setTag("ProxyCheckJavaAPI");
-
+        return new ProxyCheck(settings);
     }
 
     public static void main(String args[]) throws IOException {
-        setupProxycheckSettings();
+        // Create a new ProxyCheck instance
+        ProxyCheck proxyCheck = createProxyCheck();
         
         // Get reponse as a Json but in String format
         String jsonReponse = proxyCheck.getLookupResponse("1.1.1.1");
@@ -213,7 +217,6 @@ public class ProxyCheck {
         String asn = results.getAsn();
         String proxy = results.getProxy();
         //.... keep going
-        
     }
 
 }
