@@ -11,10 +11,8 @@ public class ProxyCheckExample {
 
     /**
      * Please note the settings below will throw a NPE , These settings are merely an example and you shouldn't need all
-     * the settings anywho.
-     *
+     * the settings anyway.
      */
-
     private static ProxyCheck createProxyCheck(){
         ProxyCheckSettings settings = new ProxyCheckSettings();
         settings.setApi_key("APIKey");
