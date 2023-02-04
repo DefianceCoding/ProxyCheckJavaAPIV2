@@ -9,9 +9,25 @@ import io.github.defiancecoding.proxycheck.api.webconnection.HTTPQuery;
 
 public class ProxyCheck
 {
-  private final ProxyCheckSettings settings = new ProxyCheckSettings();
-  private final HTTPQuery httpQuery = new HTTPQuery();
+  private final ProxyCheckSettings settings;
+  private final HTTPQuery httpQuery;
 
+  /**
+   * Constructs a new ProxyCheck instance with default settings
+   */
+  public ProxyCheck() {
+      this(new ProxyCheckSettings());
+  }
+  
+  /**
+   * Constructs a new ProxyCheck instance
+   * @param settings API settings for ProxyCheck queries
+   */
+  public ProxyCheck(ProxyCheckSettings settings) {
+      this.settings = settings;
+      this.httpQuery = new HTTPQuery();
+  }
+  
   /**
    * Builds the API URL based on selected settings
    *
